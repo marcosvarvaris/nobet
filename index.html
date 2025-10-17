@@ -14,6 +14,36 @@
     <button id="loginBtn">Giriş Yap</button>
   </div>
 
+  <script type="module"
+  import { initializeApp from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+  import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+
+  const firebaseConfig = {
+  apiKey: "AIzaSyAP2OlE_MalW8YrAnCtWED2V_PrwCjuReg",
+  authDomain: "nobet-f1c04.firebaseapp.com",
+  projectId: "nobet-f1c04",
+  storageBucket: "nobet-f1c04.firebasestorage.app",
+  messagingSenderId: "439734037131",
+  appId: "1:439734037131:web:a9ba506dd1d1d51ac0c28e",
+  measurementId: "G-7863P73C0L"
+};
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  document.getElementById("loginBtn").addEventListener("click", () => {
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    signInWithEmailAndPassword(auth, email, password)
+      .then(() => {
+        window.location.href = "dashboard.html";
+      })
+      .catch((error) => {
+        alert("Giriş hatası: " + error.message);
+      });
+  });
+</script>
   <script src="script.js"></script>
 </body>
 </html>
